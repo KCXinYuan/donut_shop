@@ -8,6 +8,9 @@ var stores = function places(name,nameTwo,min,max,avg) {
   this.avg = avg; // average donuts bought by each customer
 };
 
+this.donutsPerHour = [];
+this.allLocations = []
+
 
 var downtown = new stores("Downtown","downtown",8,43,4.50);
 var capitolHill = new stores("Capitol Hill","capitolHill",4,37,2.00);
@@ -15,6 +18,13 @@ var southLakeUnion = new stores("South Lake Union","southLakeUnion",9,23,6.33);
 var wedgewood = new stores("Wedgewood","wedgewood",2,28,1.25);
 var ballard = new stores("Ballard","ballard",8,58,3.75);
 
+allLocations.push(downtown);
+allLocations.push(capitolHill);
+allLocations.push(southLakeUnion);
+allLocations.push(wedgewood);
+allLocations.push(ballard);
+//console.log(donutsPerHour);
+//console.log(allLocations);
 
 var locations = ["Downtown","Capitol Hill","South Lake Union","Wedgewood","Ballard"];
 
@@ -39,12 +49,11 @@ hoursOpen.appendChild(total);
 total.textContent = "Total";
 
 // Daily sales----------------------------------------------------
-this.donutsPerHour = [];
 
 var storeLocations = document.getElementById('body');
 
-this.sales = function(x){
-  hours.forEach(function(){ // make random customer count and donuts bought
+this.sales = function(x) {
+  hours.forEach(function() { // make random customer count and donuts bought
     var donutDailyCust = Math.floor(Math.random()*(x.max-x.min+1)+x.min);
     donutsPerHour.push(Math.ceil(x.avg*donutDailyCust));
   });
@@ -72,8 +81,64 @@ this.sales = function(x){
   this.donutsPerHour = [];
 };
 
-sales(downtown);  // calling the function for each location.
+allLocations.forEach(function(x){
+  sales(x);
+});
+
+/*sales(downtown);  // calling the function for each location.
 sales(capitolHill);
 sales(southLakeUnion);
 sales(wedgewood);
 sales(ballard);
+*/
+// Form submission-----------------------------------------
+var donutForm = document.getElementById('donut-form');
+
+var handleNewStores = function(event) { // Function that makes a new store or updates an existing one
+  event.preventDefault();
+
+  if(!event.target.where.value || !event.target.min.value || !event.target.max.value || !event.target.avg.value) {
+    return alert('Make sure to fill all fields!');
+  };
+
+  var where = event.target.where.value;
+  var min = event.target.min.value;
+  var max = event.target.max.value;
+  var avg = event.target.avg.value;
+
+  if (where === 'Saturn Valley') { // Easter egg for any EarthBound fans c:
+    return alert('BOING');
+  }
+
+  var newShop = true;
+
+  allLocations.forEach(function(x){
+    if(x.name === where) {
+      x.min = min;
+      x.max = max;
+      x.avg = avg;
+      document.getElementById('body').innerHTML = '';
+      allLocations.forEach(function(x) {
+        sales(x);
+      });
+      newShop = false;
+    }
+
+    console.log(allLocations);
+  });
+
+  if (newShop === true) {
+    var newStoreSubmit = new stores(where, where, min, max, avg);
+    allLocations.push(newStoreSubmit);
+    console.log(allLocations);
+    sales(newStoreSubmit);
+  }
+}
+
+
+
+
+// Event Listener-----------------------------------------------
+
+// Event Listener for creating new stores
+donutForm.addEventListener('submit', handleNewStores);
