@@ -106,6 +106,10 @@ var handleNewStores = function(event) { // Function that makes a new store or up
   var max = event.target.max.value;
   var avg = event.target.avg.value;
 
+  if (where === 'Saturn Valley') { // Easter egg for any EarthBound fans c:
+    return alert('BOING');
+  }
+
   var newShop = true;
 
   allLocations.forEach(function(x){
