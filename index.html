@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+  <meta charset="utf-8"/>
   <title>Top Pot Donut Statistics</title>
 </head>
 <body>
@@ -10,5 +11,24 @@
     <thead id="head"></thead>
     <tbody id="body"></tbody>
   </table>
+  <form id="donut-form" accept-charset=utf-8>
+    <fieldset>
+      <legend>Add/Update Donut Shop Stats</legend>
+
+      <label for="where">Where: </label>
+      <input name="where" type="text">
+
+      <label for="min">Minimum customers per hour: </label>
+      <input name="min" type="number">
+
+      <label for="max">Maximum customers per hour: </label>
+      <input name="max" type="number">
+
+      <label for="avg">Average donuts per customer: </label>
+      <input name="avg" type="number">
+
+      <button id="submit" type="submit">Submit</button>
+    </fieldset>
+  </form>
   <script src='donut.js'></script>
 </body>
