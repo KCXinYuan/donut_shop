@@ -1,0 +1,46 @@
+
+body {
+  background-color: #A8C7CF;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+  width: 80px;
+  height: 25px;
+  text-align: center;
+}
+
+#downtown {
+  background-color: #ACF0F2;
+}
+
+#capitolHill {
+  background-color: #F3FFE2;
+}
+
+#southLakeUnion {
+  background-color: #ACF0F2;
+}
+
+#wedgewood {
+  background-color: #F3FFE2;
+}
+
+#ballard {
+  background-color: #ACF0F2;
+}
