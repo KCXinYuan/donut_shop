@@ -3,21 +3,16 @@ body {
   background-color: #A8C7CF;
 }
 
-h1 {
-  text-align: center;
-}
-
 img {
-  display: block;
+  display: inline;
   margin-left: auto;
   margin-right: auto;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
-h2 {
-  text-align: center;
-}
-
-p {
+h1, h2, p {
   text-align: center;
 }
 
@@ -30,27 +25,49 @@ table {
 }
 
 td {
-  width: 80px;
-  height: 25px;
+  width: 60px;
+  height: 22px;
   text-align: center;
 }
 
-#downtown {
+tr {
+  background-color: #EB7F00;
+}
+
+#downtown, #southLakeUnion, #ballard{
   background-color: #ACF0F2;
 }
 
-#capitolHill {
+#capitolHill, #wedgewood{
   background-color: #F3FFE2;
 }
 
-#southLakeUnion {
-  background-color: #ACF0F2;
+.flex {
+  display: flex;
+  flex-direction: column;
 }
 
-#wedgewood {
-  background-color: #F3FFE2;
+.body {
+  display: flex;
+  flex: 150px;
 }
 
-#ballard {
-  background-color: #ACF0F2;
+#nav, #form {
+  flex: 0 0 12em;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 10;
+}
+
+#form {
+  position: relative;
+  left:20px;
+}
+
+#main {
+  position: relative;
+  top: 80px;
 }
